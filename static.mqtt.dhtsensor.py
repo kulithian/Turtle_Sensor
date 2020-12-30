@@ -60,38 +60,42 @@ try:
     while True:
         # Attempt to get sensor reading.
         humidity, temp1c = Adafruit_DHT.read(DHT_TYPE, DHT_PIN)
-        time.sleep(2)
-        print('Temperature 1: {0:0.2f} C'.format(temp1c))
+        #time.sleep(2)
+        print('Temperature 1: {0:} C'.format(temp1c))
         humidity2, temp2c = Adafruit_DHT.read(DHT_TYPE, DHT_PIN2) # Second Sensor
-        time.sleep(2)
-        print('Temperature 2: {0:0.2f} C'.format(temp2c))
+        #time.sleep(2)
+        print('Temperature 2: {0} C'.format(temp2c))
         humidity3, temp3c = Adafruit_DHT.read(DHT_TYPE, DHT_PIN3) # Third Sensor
-        time.sleep(2)
-        print('Temperature 3: {0:0.2f} C'.format(temp3c))
+        #time.sleep(2)
+        print('Temperature 3: {0} C'.format(temp3c))
         humidity4, temp4c = Adafruit_DHT.read(DHT_TYPE, DHT_PIN4) # Fourth Sensor
-        print('Temperature 4: {0:0.2f} C'.format(temp4c))
-        time.sleep(2)
+        print('Temperature 4: {0} C'.format(temp4c))
+        #time.sleep(2)
         # Skip to the next reading if a valid measurement couldn't be taken.
         # This might happen if the CPU is under a lot of load and the sensor
         # can't be reliably read (timing is critical to read the sensor).
-        if humidity is None or temp1c is None or humidity2 is None or temp2c is None or humidity3 is None or temp3c is None or humidity4 is None or temp4c is None: # + Second Sensor
+        if humidity is None or temp1c is None or humidity2 is None or temp2c is None or humidity3 is None or temp3c is None or humidity4 is None or temp4c is None: # + all sensors
            time.sleep(2)
+           print('Temperature 1 retry: {0} C'.format(temp1c))
+           print('Temperature 2 retry: {0} C'.format(temp2c))
+           print('Temperature 3 retry: {0} C'.format(temp3c))
+           print('Temperature 4 retry: {0} C'.format(temp4c))
            continue
 
         #currentdate = time.strftime('%Y-%m-%d %H:%M:%S')
         #print('Date Time:   {0}'.format(currentdate))
-        #print('Temperature 1: {0:0.2f} C'.format(temp1c))
-        #print('Temperature 1F: {0:0.2f} F'.format(temp))
-        #print('Humidity 1:    {0:0.2f} %'.format(humidity))
-        #print('Temperature 2: {0:0.2f} C'.format(temp2c)) # Second Sensor
-        #print('Temperature 2F: {0:0.2f} F'.format(temp2)) # Second Sensor
-        #print('Humidity 2:    {0:0.2f} %'.format(humidity2)) # Second Sensor
-        #print('Temperature 3: {0:0.2f} C'.format(temp3c)) # Third Sensor
-        #print('Temperature 3F: {0:0.2f} F'.format(temp3)) # Third Sensor
-        #print('Humidity 3:    {0:0.2f} %'.format(humidity3)) # Third Sensor
-        #print('Temperature 4: {0:0.2f} C'.format(temp4c)) # Fourth Sensor
-        #print('Temperature 4F: {0:0.2f} F'.format(temp4)) # Fourth Sensor
-        #print('Humidity 4:    {0:0.2f} %'.format(humidity4)) # Fourth Sensor
+        #print('Temperature 1: {0} C'.format(temp1c))
+        #print('Temperature 1F: {0} F'.format(temp))
+        #print('Humidity 1:    {0} %'.format(humidity))
+        #print('Temperature 2: {0} C'.format(temp2c)) # Second Sensor
+        #print('Temperature 2F: {0} F'.format(temp2)) # Second Sensor
+        #print('Humidity 2:    {0} %'.format(humidity2)) # Second Sensor
+        #print('Temperature 3: {0} C'.format(temp3c)) # Third Sensor
+        #print('Temperature 3F: {0} F'.format(temp3)) # Third Sensor
+        #print('Humidity 3:    {0} %'.format(humidity3)) # Third Sensor
+        #print('Temperature 4: {0} C'.format(temp4c)) # Fourth Sensor
+        #print('Temperature 4F: {0} F'.format(temp4)) # Fourth Sensor
+        #print('Humidity 4:    {0} %'.format(humidity4)) # Fourth Sensor
         # Publish to the MQTT channel
         try:
             # Check sensor before trying to avoid hanging (due to multiple sensors)
