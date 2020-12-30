@@ -31,7 +31,7 @@ DHT_PIN4  = 6
 #if (len(sys.argv) < 2):
 #   raise  ValueError('Input arguments of mqtt channel temperature humidity not passed')
 
-MOSQUITTO_HOST = '192.168.1.15'
+MOSQUITTO_HOST = '' # openhab server ip
 MOSQUITTO_PORT = 1883
 MOSQUITTO_TEMP_MSG = str('turtle/temp1') # Old channel name in here
 MOSQUITTO_HUMI_MSG = str('turtle/humidity1') # Old channel name now passed by argument
