@@ -1,0 +1,17 @@
+filebeat.inputs:
+
+- type: log
+  enabled: true
+  paths:
+    - /var/log/openhab2/events.log
+  exclude_lines: ['^.*?TurtleCam_MotionAlarm'] # This is used to ignore my IP Camera motion detection logs.
+  
+## ...
+
+setup.kibana:
+  host: "ELK:5601" # ELK = elk/docker IP
+  
+## ...
+
+output.logstash:
+  hosts: ["ELK:5014"] # ELK = elk/docker IP
