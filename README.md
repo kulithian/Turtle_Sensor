@@ -1,5 +1,7 @@
 # Turtle_Sensor
 
+Update: The latest version changes the pin locations and adds 4 pins to turn +3.3v on before the sensor is queried. 
+
 A handful of people showed interest in my Turtle_Sensor project so I thought I would share some details. 
 
 Here are a few relevant photos of the project: https://imgur.com/a/G3dkZU8
